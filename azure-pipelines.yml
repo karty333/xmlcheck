@@ -8,3 +8,4 @@ stages:
     steps:
     - script: |
         git diff --name-only HEAD~1
+        git log --all
