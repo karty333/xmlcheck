@@ -1,0 +1,36 @@
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    continueOnError: true
+    steps:
+    - checkout: self
+    - checkout: Shared_Templates
+    - script: |
+        echo "hello to my first Build"
+        ls -la Shared_Templates
+- stage: Test
+  jobs:
+  - job: Test
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    continueOnError: true
+    steps:
+    - checkout: self
+    - checkout: Shared_Templates
+    - script: |
+        echo "hello to my first Build"
+        ls -la
+- stage: qa_deploy
+  jobs:
+  - deployment: qa_deploy
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    environment: 'qa-hello'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "hello, qa world !!!"
