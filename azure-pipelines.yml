@@ -6,7 +6,5 @@ stages:
       vmImage: 'Ubuntu-16.04'
     continueOnError: true
     steps:
-    - checkout: self
-    - checkout: Shared_Templates
     - script: |
         git status
