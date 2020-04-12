@@ -7,4 +7,4 @@ stages:
     continueOnError: true
     steps:
     - script: |
-        git status
+        git diff dvlp...Test
