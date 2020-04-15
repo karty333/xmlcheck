@@ -1,0 +1,11 @@
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    continueOnError: true
+    steps:
+    - script: |
+        git diff --name-only HEAD~1
+        git log --all
